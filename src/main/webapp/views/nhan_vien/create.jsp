@@ -4,6 +4,7 @@
 
 </head>
 <body>
+<h2>Xin chào, ${ nv.ten }</h2>
 <form action="/nhan-vien/store" method="POST">
     <div>
         <label>Mã</label>

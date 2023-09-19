@@ -4,7 +4,7 @@
 <title>Login Page</title>
 </head>
 <body>
-
+<h2>Xin chào, ${ name }</h2>
 <form action="/login" method="POST">
     <div>
         <label>Username</label>
