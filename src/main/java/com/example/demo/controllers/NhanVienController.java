@@ -1,8 +1,10 @@
 package com.example.demo.controllers;
 
 import com.example.demo.requests.NhanVienRequest;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,20 +29,28 @@ public class NhanVienController {
     }
 
     @GetMapping("create")
-    public String create()
+    public String create(@ModelAttribute("nv") NhanVienRequest req)
     {
         return "nhan_vien/create";
     }
 
     @PostMapping("store")
-    public String store(@ModelAttribute("nv") NhanVienRequest req) {
+    public String store(
+        @Valid @ModelAttribute("nv") NhanVienRequest req,
+        BindingResult result
+    ) {
         System.out.println(req.getMa());
         System.out.println(req.getHo());
         System.out.println(req.getTenDem());
         System.out.println(req.getTen());
 
-//        model.addAttribute("nv", req);
-
         return "nhan_vien/create";
     }
+
+//    @ModelAttribute("test1")
+//    public int[] test()
+//    {
+//        int[] a = {1, 2, 3, 4};
+//        return a;
+//    }
 }

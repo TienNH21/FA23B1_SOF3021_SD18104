@@ -1,26 +1,30 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
 
 </head>
 <body>
 <h2>Xin chào, ${ nv.ten }</h2>
-<form action="/nhan-vien/store" method="POST">
+<sf:form action="/nhan-vien/store" method="POST"
+         modelAttribute="nv">
     <div>
         <label>Mã</label>
-        <input type="text" name="ma" />
+        <span style="color: red">*</span>
+        <sf:input type="text" name="ma" path="ma" />
+        <sf:errors path="ma" cssStyle="color: red" />
     </div>
     <div>
         <label>Họ</label>
-        <input type="text" name="ho" />
+        <sf:input type="text" name="ho" path="ho" />
     </div>
     <div>
         <label>Tên đệm</label>
-        <input type="text" name="tenDem" />
+        <sf:input type="text" name="tenDem" path="tenDem" />
     </div>
     <div>
         <label>Tên</label>
-        <input type="text" name="ten" />
+        <sf:input type="text" name="ten" path="ten" />
     </div>
     <div>
         <label>Giới tính</label>
@@ -29,19 +33,19 @@
     </div>
     <div>
         <label>Ngày sinh</label>
-        <input type="date" name="ngaySinh" />
+        <sf:input type="date" name="ngaySinh" path="ngaySinh" />
     </div>
     <div>
         <label>Địa Chỉ</label>
-        <input type="text" name="diaChi" />
+        <sf:input type="text" name="diaChi" path="diaChi" />
     </div>
     <div>
         <label>SDT</label>
-        <input type="text" name="sdt" />
+        <sf:input type="text" name="sdt" path="sdt" />
     </div>
     <div>
         <button>Submit</button>
     </div>
-</form>
+</sf:form>
 </body>
 </html>
