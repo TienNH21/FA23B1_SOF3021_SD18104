@@ -28,6 +28,19 @@ public class NhanVienController {
         return "nhan_vien/index";
     }
 
+    @GetMapping("delete/{ma}")
+    public String delete(@PathVariable("ma") String maNV)
+    {
+        for (int i = 0; i < this.ds.size(); i++) {
+            NhanVienRequest nv = this.ds.get(i);
+            if (nv.getMa().equals(maNV)) {
+                this.ds.remove(i);
+                break;
+            }
+        }
+        return "redirect:/nhan-vien/index";
+    }
+
     @GetMapping("create")
     public String create(@ModelAttribute("nv") NhanVienRequest req)
     {
@@ -44,7 +57,35 @@ public class NhanVienController {
         System.out.println(req.getTenDem());
         System.out.println(req.getTen());
 
-        return "nhan_vien/create";
+        return "redirect:/nhan-vien/index";
+    }
+
+    @GetMapping("edit/{ma}")
+    public String edit(@PathVariable("ma") String ma, Model m)
+    {
+        for (int i = 0; i < this.ds.size(); i++) {
+            NhanVienRequest nv = this.ds.get(i);
+            if (nv.getMa().equals(ma)) {
+                m.addAttribute("nv", nv);
+                break;
+            }
+        }
+
+        return "nhan_vien/edit";
+    }
+
+    @PostMapping("update/{ma}")
+    public String update(@PathVariable("ma") String ma, NhanVienRequest req)
+    {
+        for (int i = 0; i < this.ds.size(); i++) {
+            NhanVienRequest nv = this.ds.get(i);
+            if (nv.getMa().equals(ma)) {
+                this.ds.set(i, req);
+                break;
+            }
+        }
+
+        return "redirect:/nhan_vien/index";
     }
 
 //    @ModelAttribute("test1")

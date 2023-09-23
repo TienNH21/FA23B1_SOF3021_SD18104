@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Xin chào, ${ nv.ten }</h2>
-<sf:form action="/nhan-vien/store" method="POST"
+<sf:form action="/nhan-vien/update/${ nv.ma }" method="POST"
          modelAttribute="nv">
     <div>
         <label>Mã</label>

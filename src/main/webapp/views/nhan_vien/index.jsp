@@ -32,8 +32,8 @@
             <td>${ nv.ngaySinh }</td>
             <td>${ nv.diaChi }</td>
             <td>${ nv.sdt }</td>
-            <td><a href="#">Update</a></td>
-            <td><a href="#">Delete</a></td>
+            <td><a href="/nhan-vien/edit/${nv.ma}">Update</a></td>
+            <td><a href="/nhan-vien/delete/${nv.ma}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
