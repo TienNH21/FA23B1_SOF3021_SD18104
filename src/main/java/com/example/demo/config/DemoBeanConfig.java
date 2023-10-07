@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-public class DemoBeanConfig {
+public class DemoBeanConfig
+{
     @Bean("TuanPV")
     public NhanVienRequest getBean1() {
         NhanVienRequest r = new NhanVienRequest("PH20430", "Phạm", "Văn", "Tuân", 1, "01/01/2003", "HN", "0123123123");

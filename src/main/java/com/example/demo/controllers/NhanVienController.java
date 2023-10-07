@@ -1,29 +1,35 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.NhanVien;
+import com.example.demo.repositories.NhanVienRepository;
 import com.example.demo.requests.NhanVienRequest;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("nhan-vien")
 public class NhanVienController {
-    private ArrayList<NhanVienRequest> ds;
+    private List<NhanVien> ds;
+
+    @Autowired
+    private NhanVienRepository nvRepo;
 
     public NhanVienController()
     {
         this.ds = new ArrayList<>();
-        ds.add(new NhanVienRequest("PH1", "Ng", "Van", "A", 1, "12/12/2000", "HN", "0123123123"));
-        ds.add(new NhanVienRequest("PH2", "Ng", "Thi", "B", 0, "12/12/2000", "HN", "0123123123"));
     }
 
     @GetMapping("index")
     public String index(Model model)
     {
+        this.ds = this.nvRepo.findAll();
         model.addAttribute("data", this.ds);
         return "nhan_vien/index";
     }
@@ -31,13 +37,13 @@ public class NhanVienController {
     @GetMapping("delete/{ma}")
     public String delete(@PathVariable("ma") String maNV)
     {
-        for (int i = 0; i < this.ds.size(); i++) {
-            NhanVienRequest nv = this.ds.get(i);
-            if (nv.getMa().equals(maNV)) {
-                this.ds.remove(i);
-                break;
-            }
-        }
+//        for (int i = 0; i < this.ds.size(); i++) {
+//            NhanVienRequest nv = this.ds.get(i);
+//            if (nv.getMa().equals(maNV)) {
+//                this.ds.remove(i);
+//                break;
+//            }
+//        }
         return "redirect:/nhan-vien/index";
     }
 
@@ -63,13 +69,13 @@ public class NhanVienController {
     @GetMapping("edit/{ma}")
     public String edit(@PathVariable("ma") String ma, Model m)
     {
-        for (int i = 0; i < this.ds.size(); i++) {
-            NhanVienRequest nv = this.ds.get(i);
-            if (nv.getMa().equals(ma)) {
-                m.addAttribute("nv", nv);
-                break;
-            }
-        }
+//        for (int i = 0; i < this.ds.size(); i++) {
+//            NhanVienRequest nv = this.ds.get(i);
+//            if (nv.getMa().equals(ma)) {
+//                m.addAttribute("nv", nv);
+//                break;
+//            }
+//        }
 
         return "nhan_vien/edit";
     }
@@ -77,13 +83,13 @@ public class NhanVienController {
     @PostMapping("update/{ma}")
     public String update(@PathVariable("ma") String ma, NhanVienRequest req)
     {
-        for (int i = 0; i < this.ds.size(); i++) {
-            NhanVienRequest nv = this.ds.get(i);
-            if (nv.getMa().equals(ma)) {
-                this.ds.set(i, req);
-                break;
-            }
-        }
+//        for (int i = 0; i < this.ds.size(); i++) {
+//            NhanVienRequest nv = this.ds.get(i);
+//            if (nv.getMa().equals(ma)) {
+//                this.ds.set(i, req);
+//                break;
+//            }
+//        }
 
         return "redirect:/nhan_vien/index";
     }
