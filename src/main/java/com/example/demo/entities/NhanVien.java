@@ -1,9 +1,6 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +17,7 @@ import java.util.UUID;
 public class NhanVien {
     @Id
     @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name="Ho")

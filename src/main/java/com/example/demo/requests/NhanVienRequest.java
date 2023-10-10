@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashMap;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +19,8 @@ public class NhanVienRequest {
     @NotBlank(message = "Không được để trống")
     private String ma;
 
+    private Integer id;
+
     @NotBlank
     private String ho;
 
@@ -26,9 +29,9 @@ public class NhanVienRequest {
     @NotBlank
     private String ten;
 
-    private Integer gioiTinh;
+    private String gioiTinh;
     private String ngaySinh;
     private String diaChi;
     private String sdt;
-
+    private String matKhau;
 }

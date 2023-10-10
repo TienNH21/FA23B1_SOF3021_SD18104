@@ -37,13 +37,8 @@ public class NhanVienController {
     @GetMapping("delete/{ma}")
     public String delete(@PathVariable("ma") String maNV)
     {
-//        for (int i = 0; i < this.ds.size(); i++) {
-//            NhanVienRequest nv = this.ds.get(i);
-//            if (nv.getMa().equals(maNV)) {
-//                this.ds.remove(i);
-//                break;
-//            }
-//        }
+        NhanVien nv = this.nvRepo.findByMa(maNV);
+        this.nvRepo.delete(nv);
         return "redirect:/nhan-vien/index";
     }
 
@@ -58,40 +53,46 @@ public class NhanVienController {
         @Valid @ModelAttribute("nv") NhanVienRequest req,
         BindingResult result
     ) {
-        System.out.println(req.getMa());
-        System.out.println(req.getHo());
-        System.out.println(req.getTenDem());
-        System.out.println(req.getTen());
-
+        NhanVien nv = new NhanVien();
+        nv.setMa(req.getMa());
+        nv.setHo(req.getHo());
+        nv.setTenDem(req.getTenDem());
+        nv.setTen(req.getTen());
+        nv.setGioiTinh(req.getGioiTinh());
+        nv.setNgaySinh(req.getNgaySinh());
+        nv.setDiaChi(req.getDiaChi());
+        nv.setSdt(req.getSdt());
+        nv.setMatKhau(req.getMatKhau());
+        this.nvRepo.save(nv);
         return "redirect:/nhan-vien/index";
     }
 
     @GetMapping("edit/{ma}")
     public String edit(@PathVariable("ma") String ma, Model m)
     {
-//        for (int i = 0; i < this.ds.size(); i++) {
-//            NhanVienRequest nv = this.ds.get(i);
-//            if (nv.getMa().equals(ma)) {
-//                m.addAttribute("nv", nv);
-//                break;
-//            }
-//        }
-
+        NhanVien nv = this.nvRepo.findByMa(ma);
+        m.addAttribute("nv", nv);
         return "nhan_vien/edit";
     }
 
     @PostMapping("update/{ma}")
     public String update(@PathVariable("ma") String ma, NhanVienRequest req)
     {
-//        for (int i = 0; i < this.ds.size(); i++) {
-//            NhanVienRequest nv = this.ds.get(i);
-//            if (nv.getMa().equals(ma)) {
-//                this.ds.set(i, req);
-//                break;
-//            }
-//        }
+        NhanVien oldValue = this.nvRepo.findByMa(ma);
+        NhanVien nv = new NhanVien();
+        nv.setId(oldValue.getId());
+        nv.setMa(req.getMa());
+        nv.setHo(req.getHo());
+        nv.setTenDem(req.getTenDem());
+        nv.setTen(req.getTen());
+        nv.setGioiTinh(req.getGioiTinh());
+        nv.setNgaySinh(req.getNgaySinh());
+        nv.setDiaChi(req.getDiaChi());
+        nv.setSdt(req.getSdt());
+        nv.setMatKhau(req.getMatKhau());
+        this.nvRepo.save(nv);
 
-        return "redirect:/nhan_vien/index";
+        return "redirect:/nhan-vien/index";
     }
 
 //    @ModelAttribute("test1")

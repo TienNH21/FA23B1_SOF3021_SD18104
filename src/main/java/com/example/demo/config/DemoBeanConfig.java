@@ -10,13 +10,14 @@ public class DemoBeanConfig
 {
     @Bean("TuanPV")
     public NhanVienRequest getBean1() {
-        NhanVienRequest r = new NhanVienRequest("PH20430", "Phạm", "Văn", "Tuân", 1, "01/01/2003", "HN", "0123123123");
+//        NhanVienRequest r = new NhanVienRequest("PH20430", 0, "Phạm", "Văn", "Tuân", 1, "01/01/2003", "HN", "0123123123");
+        NhanVienRequest r = new NhanVienRequest();
         return r;
     }
 
     @Bean("HoangPH")
     public NhanVienRequest getBean2() {
-        NhanVienRequest r = new NhanVienRequest("PH16310", "Phạm", "Huy", "Hoàng", 1, "01/01/2004", "HN", "0987987987");
+        NhanVienRequest r = new NhanVienRequest();
         return r;
     }
 }
